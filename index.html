@@ -1,13 +1,142 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Site</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belle Essência | Grupo de Vendas</title>
+<style>
+:root{
+  --pink:#e91e63; --pink2:#ff5b8f; --wine:#542234; --gold:#b78335;
+  --cream:#fff8f9; --text:#4d3340; --white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--text);line-height:1.5}
+a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);
+display:flex;align-items:center;justify-content:space-between;padding:14px 7%;box-shadow:0 2px 18px #8b36531a}
+.logo{font-family:Georgia,serif;font-size:32px;line-height:.8;color:var(--pink);font-style:italic}
+.logo small{display:block;font-size:17px;color:var(--wine);font-style:normal;letter-spacing:2px;margin-left:20px}
+nav{display:flex;gap:28px;font-weight:bold;font-size:15px}
+nav a:hover{color:var(--pink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;
+padding:16px 25px;background:linear-gradient(135deg,var(--pink),#d91451);color:#fff;font-weight:800;
+box-shadow:0 10px 25px #e91e6350;transition:.25s;cursor:pointer}
+.btn:hover{transform:translateY(-3px);filter:brightness(1.05)}
+.btn.white{background:#fff;color:#d91b57;box-shadow:none}
+.hero{min-height:650px;padding:70px 7%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;
+background:radial-gradient(circle at 75% 25%,#ffd8e6 0,transparent 25%),linear-gradient(120deg,#fff 0%,#fff7fa 55%,#ffe7ef)}
+.badge{display:inline-block;background:#ffe2eb;color:#cf2459;padding:8px 17px;border-radius:999px;font-weight:800;margin-bottom:18px}
+.hero h1{font:700 clamp(44px,5vw,72px)/1.04 Georgia,serif;max-width:680px}
+.hero h1 span{color:var(--pink)}
+.hero p{font-size:19px;max-width:580px;margin:22px 0 28px;color:#694957}
+.hero-art{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center}
+.art-circle{width:min(500px,90%);aspect-ratio:1;border:2px solid #d9a34b;border-radius:50%;
+background:radial-gradient(circle,#fff 45%,#ffe6ef 100%);box-shadow:inset 0 0 50px #f8b8cd55}
+.brand{position:absolute;text-align:center;font-family:Georgia,serif}
+.brand b{display:block;font-size:clamp(68px,9vw,120px);font-style:italic;color:var(--pink);line-height:.75}
+.brand strong{font-size:clamp(38px,5vw,65px);font-weight:400;color:#74401e}
+.brand small{display:block;color:#d72b62;letter-spacing:4px;font:bold 15px Arial;margin-top:15px}
+.float{position:absolute;background:#fff;border-radius:24px;padding:20px;font-size:55px;box-shadow:0 18px 40px #a52c5540}
+.f1{left:2%;top:8%}.f2{right:1%;top:12%}.f3{left:5%;bottom:6%}.f4{right:3%;bottom:3%}
+.quick{display:flex;gap:40px;margin-top:38px}
+.quick div{text-align:center;max-width:130px}.quick i{font-style:normal;font-size:30px;color:var(--pink)}
+.quick b{display:block;margin-top:5px}.quick span{font-size:13px}
+section{padding:80px 7%}.section-title{text-align:center;font:700 38px Georgia,serif;margin-bottom:8px}
+.section-sub{text-align:center;color:#795864;margin-bottom:42px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{background:#fff;border:1px solid #f3cbd8;border-radius:22px;padding:28px 20px;text-align:center;box-shadow:0 10px 25px #9c385012}
+.card .icon{width:110px;height:110px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;
+background:#fff0f5;font-size:54px}.card h3{font-size:21px;color:#9c3156;margin-bottom:7px}
+.benefits{background:#fff0f5}.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.benefit{display:flex;align-items:center;gap:18px}.benefit .round{min-width:85px;height:85px;border-radius:50%;
+display:grid;place-items:center;background:#fff;font-size:38px;color:var(--pink)}
+.benefit h3{margin-bottom:5px}
+.cta{background:linear-gradient(135deg,#e81759,#c80f48);color:#fff;text-align:center;padding:65px 7%}
+.cta h2{font:700 39px Georgia,serif}.cta p{font-size:18px;margin:10px 0 25px}
+footer{background:#4b1f30;color:#f7dce6;padding:28px 7%;display:flex;align-items:center;justify-content:space-between}
+footer .logo{color:#fff}footer .logo small{color:#f7dce6}
+.social{font-size:25px;display:flex;gap:20px}
+@media(max-width:900px){nav{display:none}.hero{grid-template-columns:1fr;padding-top:45px}.hero-copy{text-align:center}.hero p{margin-left:auto;margin-right:auto}.hero-art{min-height:420px}.quick{justify-content:center}.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){header{padding:14px 5%}.header-btn{display:none}.hero,section{padding-left:5%;padding-right:5%}.hero h1{font-size:45px}.hero-art{min-height:360px}.float{font-size:35px;padding:13px}.brand b{font-size:78px}.brand strong{font-size:42px}.quick{gap:14px}.cards,.benefit-grid{grid-template-columns:1fr}.benefit{padding:10px}.cta h2{font-size:32px}footer{flex-direction:column;gap:15px;text-align:center}}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1638939471384249');
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
 </head>
-
 <body>
-    <h1>Meu site está funcionando!</h1>
-    <p>Publicado pelo GitHub Pages.</p>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1638939471384249&ev=PageView&noscript=1"
+/></noscript>
+<header>
+  <a href="#" class="logo">Belle<small>ESSÊNCIA</small></a>
+  <nav><a href="#inicio">Início</a><a href="#produtos">Produtos</a><a href="#beneficios">Benefícios</a><a href="#grupo">Sobre o Grupo</a></nav>
+  <!-- COLE O LINK DO SEU GRUPO ABAIXO -->
+  <a class="btn header-btn" href="https://chat.whatsapp.com/JTNh7CJYc85GPmttGKaFTa" target="_blank" onclick="fbq('trackCustom', 'SetupProdutos');">◉ Entrar no Grupo</a>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-copy">
+    <div class="badge">♥ GRUPO DE VENDAS</div>
+    <h1>Tudo para realçar sua <span>beleza</span> e seu <span>estilo!</span></h1>
+    <p>Entre no nosso grupo exclusivo e receba novidades, promoções e ofertas imperdíveis de artigos femininos e infantil feminino.</p>
+    <a class="btn" href="https://chat.whatsapp.com/JTNh7CJYc85GPmttGKaFTa" target="_blank" onclick="fbq('trackCustom', 'SetupProdutos');">◉ ENTRAR NO GRUPO DO WHATSAPP</a>
+    <div class="quick">
+      <div><i>٪</i><b>Ofertas</b><span>exclusivas</span></div>
+      <div><i>🎁</i><b>Novidades</b><span>todos os dias</span></div>
+      <div><i>♙</i><b>Ambiente seguro</b><span>e confiável</span></div>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="art-circle"></div>
+    <div class="brand"><b>Belle</b><strong>essência</strong><small>ARTIGOS FEMININOS<br>& INFANTIL FEMININO</small></div>
+    <div class="float f1">👜</div><div class="float f2">💄</div><div class="float f3">👗</div><div class="float f4">🧸</div>
+  </div>
+</section>
+
+<section id="produtos">
+  <h2 class="section-title">O que você encontra por aqui?</h2>
+  <p class="section-sub">Diversos artigos femininos para todos os estilos</p>
+  <div class="cards">
+    <article class="card"><div class="icon">👗</div><h3>Roupas</h3><p>Peças modernas, confortáveis e estilosas.</p></article>
+    <article class="card"><div class="icon">👜</div><h3>Bolsas</h3><p>Modelos incríveis para diversas ocasiões.</p></article>
+    <article class="card"><div class="icon">💍</div><h3>Acessórios</h3><p>Detalhes que completam e elevam seu visual.</p></article>
+    <article class="card"><div class="icon">💄</div><h3>Beleza</h3><p>Maquiagem e cuidados para realçar ainda mais você.</p></article>
+  </div>
+</section>
+
+<section class="benefits" id="beneficios">
+  <h2 class="section-title">♥ Por que participar? ♥</h2>
+  <div class="benefit-grid">
+    <div class="benefit"><div class="round">٪</div><div><h3>Ofertas especiais</h3><p>Descontos e oportunidades divulgados exclusivamente no grupo.</p></div></div>
+    <div class="benefit"><div class="round">📣</div><div><h3>Sempre novidades</h3><p>Novos produtos e lançamentos para você ficar sempre por dentro.</p></div></div>
+    <div class="benefit"><div class="round">👥</div><div><h3>Fácil e prático</h3><p>É só entrar no WhatsApp e acompanhar tudo de pertinho.</p></div></div>
+  </div>
+</section>
+
+<section class="cta" id="grupo">
+  <h2>♥ Gostou? Entre agora! ♥</h2>
+  <p>Faça parte da nossa comunidade e acompanhe todas as novidades.</p>
+  <a class="btn white" href="https://chat.whatsapp.com/JTNh7CJYc85GPmttGKaFTa" target="_blank" onclick="fbq('trackCustom', 'SetupProdutos');">◉ ENTRAR NO GRUPO DO WHATSAPP</a>
+</section>
+</main>
+
+<footer>
+  <div class="logo">Belle<small>ESSÊNCIA</small></div>
+  <div>© 2026 Belle Essência — Todos os direitos reservados.</div>
+  <div class="social">◉ ◎ ♡</div>
+</footer>
 </body>
 </html>
